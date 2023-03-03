@@ -63,28 +63,18 @@
     }, 0);
     console.log(timetoLive);
     // 5. Sort the inventors by years lived
-      const results = inventors.reduce((a,inventor) => {
-      const year = parseInt(inventor.year.slice(0,4));
-      const passing = parseInt(inventor.passing.slice(0,4));
-      const age = pasing - year;
+   
+  const inventorsAge = inventors.reduce((ttl, inventor) => {
+  const tyear = new Date(inventor.year);
+  const tpassed = new Date(inventor.passed);
+  const tage =  tpassed- tyear;
 
-      a.timeLived += age;
-      a.maxAge = Math.max(a.maxAge, age);
-      a.inventors.push({name: inventor.name, age});
-      
-      return a;
-    },
-    {timeLived:0, maxAge:0,inventors:[]});
+  ttl.push({name: inventor.first + " " + inventor.last, age:tage});
+  return ttl;
+}, []);
 
-    results.averageAge = reusults.timeLived / inventors.length
-
-    const sortedInventors = results.inventors.sort((b,c) => b.age - c.age);
-
-    console.log("TOtal age:", results.timeLived);
-    console.log("Average age:", results.averageAge);
-    console.log("Maximum age:",results.maxAge);
-    console.log("sorted inventors by age", sortedInventors);
-    console.log("inventors with their names and ages", results.inventors);
+console.log(inventorsAge);
+     
 
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
